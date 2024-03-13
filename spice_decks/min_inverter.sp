@@ -3,20 +3,20 @@
 
 *min_inverter.sp
 *inversor minimo 2:1
-
+.option scale=90n
 .global gnd! vdd!
 ********************************************************************************
 * Library          : basic_cells
-* Cell             : min_inverter
+* Cell         
 * View             : schematic
 * View Search List : hspice hspiceD schematic cmos_sch spice veriloga
 * View Stop List   : hspice hspiceD
 ********************************************************************************
 
-.subckt inv in out N = 360n P = 720n
-xm0 out in gnd! gnd! ne w=360n l=180n as=1.728e-13 ad=1.728e-13 ps=1.68e-06 pd=1.68e-06
-+ nrs=0.75 nrd=0.75 m='1*1' par1='1*1' xf_subext=0
-xm1 out in vdd! vdd! pe w=720n l=180n as=3.456e-13 ad=3.456e-13 ps=2.4e-06 pd=2.4e-06
-+ nrs=0.375 nrd=0.375 m='1*1' par1='1*1' xf_subext=0
-.ends
+.subckt inv in out N=4 P=8
+xm0 out in gnd! gnd! ne w='N' l=2
++ as='N*5' ad='N*5' ps='2*N+10' pd='2*N+10'
+xm1 out in vdd! vdd! pe w='P' L=2
++ as='P*5' ad='P*5' ps='2*P+10' pd='2*P+10'
 
+.ends
