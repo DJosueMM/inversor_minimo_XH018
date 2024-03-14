@@ -106,8 +106,44 @@ $$\tau = 3 \cdot 14.7 k\ohm \cdot 1.39fF = 60.88 ps$$
 
 
 
-## Parte 2. Diseño deun inversor mínimo de tamaño óptimo 
+## Parte 2. Diseño de un inversor mínimo de tamaño óptimo 
 ### Parte 2.a 
+
+#### Inversor de tamaño mínimo 
+
+Se diseñó a nivel de esquemático el inversor que se muestra en la siguiente figura:
+
+![Esquemático del inversor](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/sch_inversor.png)
+
+Este cuenta con un NMOS de tamaño mínimo permitido por las reglas escalables con contactos en las difusiones para la tecnología utilizada. Teniendo un valor de lambda de 90 nm, la expresión del transistor mínimo 4/2 lambda resulta en un ancho de NMOS de 360 nm.
+
+Para obtener un inversor sin sesgo con márgenes de ruido totalmente simétricos, se debe cumplir que al tener VDD/2 en la entrada, su salida sea también VDD/2. Esto implica que los parámetros Beta tendrán una relación Bp/Bn = 1. Para lograr esto, se diseñó el deck de HSPICE `inverter_transfer.sp`, donde se obtienen las funciones de transferencia para diferentes relaciones de anchos de transistor P/N. Al simular estos datos, se obtuvo la siguiente gráfica:
+
+![Función de transferencia del inversor](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/tf_inv_ra.png)
+
+De estos datos, se concluye que para una relación de aproximadamente 3.1 : 1 se logran márgenes de ruido simétricos. 
+En cuanto a la corriente de cortocircuito, que ocurre cuando ambos transistores están encendidos en el punto donde Vout = VDD/2, se obtuvo la siguiente gráfica de corriente de cortocircuito en función de la relación P/N:
+
+![Corriente de cortocircuito](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/Isc_vs_ra.png)
+
+Para una relación cercana a la que proporciona márgenes de ruido simétricos, se tiene aproximadamente una corriente instantánea de 0.90 A.
+
+Los análisis anteriores se realizaron para una esquina de variabilidad del proceso "tm typical medium", que representa el comportamiento neutral. No obstante, se pueden realizar análisis en otras esquinas de variabilidad donde se sesga el inversor, haciendo más rápido el PMOS o el NMOS. Se llevó a cabo este análisis en las siguientes esquinas:
+
+- WP: worst case power; NMOS rápido y PMOS rápido
+- WS: worst case speed; NMOS lento y PMOS lento
+- WO: worst case one; NMOS rápido y PMOS lento
+- WZ: worst case zero; NMOS lento y PMOS rápido
+
+Se obtuvo la función de transferencia del proceso para cada esquina:
+
+[Insertar función de transferencia para cada esquina]
+
+De estos datos, se obtuvieron los respectivos tiempos de propagación de subida y de caída para cada esquina:
+
+![Esquinas de variabilidad](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/corners_const.png)
+
+
 
 
 ### Parte 2.b
