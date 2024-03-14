@@ -12,7 +12,7 @@ $$R_{eff} = \frac{V_{DD}}{I_{H}+I_{L}}  \quad(2)$$
 \
 \
 Los valores para los siguientes cáculos se tomaron de los parámetros para transistores 1.8V (ne,pe) de un proceso XH018 - 0.18 µm. Además para los cáculos realizados, se desprecia $I_{L}$, ya que su valor en comparación con otras corrientes en el circuitos es muy pequeña. También es importante destacar que para obtener los valores de las resistecias en términos de ohmios se multipicaron las ecuaciones (1) y (2) por el ancho de los transistores. 
-
+`spice.deck`
 ### Cáculos para transistor NMOS
 A continuación se presentan los cálculo con la ecuación (1).
 $$R_{eff} = \frac{3In(2)}{4} \frac{1.8V}{475 \times 10^{-6} A/{\micro m} \cdot 0.36{\micro m}} \approx 5.5 k\ohm $$  
