@@ -20,6 +20,10 @@ ax1.scatter(x_values[-1], y_values_micro[-1], color='black', zorder=2)
 # Etiqueta de Isat para el último valor
 ax1.text(x_values[-1], y_values_micro[-1], f'Isat= {y_values_micro[-1]:.2f} µA', ha='left', va='bottom')
 
+# Etiqueta de Isat para el último valor
+ax1.text(x_values[-3], y_values_micro[-3], f'Vds=-1.8 V', ha='left', va='bottom')
+
+
 # Ajustar los límites de los ejes y
 ax1.set_ylim(0, max(y_values_micro) * 1.1)
 
@@ -34,6 +38,10 @@ ax2.scatter(x_values[-1], y_values_micro[-1], color='black', zorder=2)
 
 # Etiqueta de Isat para el último valor
 ax2.text(x_values[-1], y_values_micro[-1], f'Isat= {y_values_micro[-1]:.2f} µA', ha='left', va='bottom')
+
+# Etiqueta de Isat para el último valor
+ax2.text(x_values[-3], y_values_micro[-3], f'Vds=-1.8 V', ha='left', va='bottom')
+
 
 # Ajustar los límites de los ejes
 plt.xlim(-2,0)

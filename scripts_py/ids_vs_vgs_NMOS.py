@@ -23,6 +23,9 @@ ax1.text(x_values[-1], y_values_micro[-1], f'Isat= {y_values_micro[-1]:.2f} µA'
 # Ajustar los límites de los ejes y
 ax1.set_ylim(0, max(y_values_micro) * 1.1)
 
+# Etiqueta de Isat para el último valor
+ax1.text(x_values[-3], y_values_micro[-3], f'Vds=1.8 V', ha='right', va='bottom')
+
 # Mostrar la cuadrícula
 ax1.grid(True)
 
@@ -43,6 +46,9 @@ ax2.set_yscale('log')
 
 # Ajustar los límites de los ejes y
 ax2.set_ylim(min(y_values_micro), max(y_values_micro) * 10)
+
+# Etiqueta de Isat para el último valor
+ax2.text(x_values[-3], y_values_micro[-3], f'Vds=1.8 V', ha='right', va='bottom')
 
 # Mostrar la cuadrícula
 ax2.grid(True)
