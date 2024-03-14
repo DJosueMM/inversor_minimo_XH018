@@ -47,7 +47,11 @@ plt.ylabel('Voltaje (V)')  # Cambia la etiqueta del eje y
 plt.title('FO4')
 
 # Añade la leyenda
-plt.legend()
+#plt.legend()
+
+# Añade la leyenda
+plt.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1)
+
 
 # Muestra la cuadrícula
 plt.grid(True)
