@@ -71,8 +71,7 @@ Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH
 $$R_{pueff} = \frac{9.9 k\ohm} {{0.36 \micro m}} \approx 27.5 k\ohm/\micro m$$
 \
 \
-Si se comparan los datos obtenidos con los teóricos se pueden apreciar diferencias de alrededor de 3 k\ohm máximo esto se debe a que el analísis teórico realizado se cálculo con valores de $W/L= (10/0.18) \micro m/\micro m$, esto influye mucho en los valores ya que no se considera el valor que se nesecita de W que es $0.36 \micro m$, por lo que al tenes ese parámetro mal se considera que los valores teóricos generados tiene una pequeña falla con respecto a los experimentales.  
-
+Al comparar los datos obtenidos con los valores teóricos, se aprecian diferencias de alrededor de $4 k\ohm$ máximo. Esto se debe a que el analísis teórico realizado se cálculo con valor de $W/L= (10/0.18) \micro m/\micro m$, ya que el parámetros porporcionados para la tecnología XH018 mostraban ese valor, lo cual implica un gran impacto en los valores debido a que no se considera el valor mínimo de ancho necesario para esta tecngología que es $0.36 \micro m$. Por lo que, al tenes este parámetro diferente al requerido, se puede considerar que los valores teóricos generados tiene una pequeña discrepancia con respecto a los datos experimentales.  
 
 
 ### Parte1.b Determinación de las capacitancias equivalentes que tiene el transistor de tamaño mínimo y constante RC para el proceso
