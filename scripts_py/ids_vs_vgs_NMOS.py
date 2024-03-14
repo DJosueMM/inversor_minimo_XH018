@@ -8,36 +8,57 @@ y_values = [4.179E-12 ,2.824E-09 ,1.328E-06 ,2.907E-05 ,8.444E-05 ,1.477E-04 ,2.
 # Escalar valores de y_values a microamperios
 y_values_micro = [y * 1e6 for y in y_values]
 
-# Graficar en escala semilogarítmica
-plt.plot(x_values, y_values_micro, linestyle='-', label="")
+# Crear la figura y los ejes
+fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
 
-# Agregar un punto para el último valor
-plt.scatter(x_values[-1], y_values_micro[-1], color='black', label='Último valor')
+# Graficar en escala normal
+ax1.plot(x_values, y_values_micro, linestyle='-', color='blue', label='Escala normal')
 
-# Etiquetas y título
-plt.xlabel('$V_{gs}$ (V)')
-plt.ylabel('Corriente')
-plt.title('Función de transferencia para NMOS de tamaño mínimo')
+# Añadir un punto para el último valor
+ax1.scatter(x_values[-1], y_values_micro[-1], color='black', zorder=2)
 
-# Añadir valor de Y como Isat
-plt.text(x_values[-1], y_values_micro[-1], f'Isat= {y_values_micro[-1]:.2f} µA', ha='right', va='bottom')
+# Etiqueta de Isat para el último valor
+ax1.text(x_values[-1], y_values_micro[-1], f'Isat= {y_values_micro[-1]:.2f} µA', ha='right', va='bottom')
 
-plt.text(x_values[-3], y_values_micro[-3], f'Vds = 1.8 V', ha='right', va='bottom')
+# Ajustar los límites de los ejes y
+ax1.set_ylim(0, max(y_values_micro) * 1.1)
+
+# Mostrar la cuadrícula
+ax1.grid(True)
+
+# Configurar el eje y para el plot logarítmico
+ax2.plot(x_values, y_values_micro, linestyle='-', color='red', label='Escala logarítmica')
+
+# Añadir un punto para el último valor
+ax2.scatter(x_values[-1], y_values_micro[-1], color='black', zorder=2)
+
+# Etiqueta de Isat para el último valor
+ax2.text(x_values[-1], y_values_micro[-1], f'Isat= {y_values_micro[-1]:.2f} µA', ha='right', va='bottom')
 
 # Ajustar los límites de los ejes
-plt.xlim(0, 1.8)
-plt.ylim(min(y_values_micro), 10000)
+plt.xlim(0, 2)
 
-# Desactivar escala logarítmica en el eje y
-plt.gca().set_yscale('log')
+# Activar escala logarítmica en el eje y
+ax2.set_yscale('log')
 
+# Ajustar los límites de los ejes y
+ax2.set_ylim(min(y_values_micro), max(y_values_micro) * 10)
 
-# Muestra la cuadrícula
-plt.grid(True)
+# Mostrar la cuadrícula
+ax2.grid(True)
 
-# Mostrar gráfico
+# Añadir leyenda
+ax1.legend(loc="upper left")
+ax2.legend(loc="upper left")
+
+# Añadir título común a los ejes y
+plt.ylabel('Corriente (µA)', fontsize=12)
+plt.gca().yaxis.set_label_coords(-0.08,1.13)
+
+# Mostrar el título arriba
+plt.suptitle('Función de transferencia para NMOS de tamaño mínimo', fontsize=14)
+
+# Mostrar la gráfica
+plt.xlabel('$V_{gs}$ (V)')
 plt.show()
-
-
-
 
