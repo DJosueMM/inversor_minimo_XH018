@@ -1,0 +1,6 @@
+$DATA1 SOURCE='PrimeSim HSPICE' VERSION='U-2023.03-SP2 linux6' PARAM_COUNT=0
+.TITLE '* corner.sp'
+ tpdr             tpdf             tpd              trise           
+ tfall            temper           alter#          
+  1.810e-11        1.473e-11        1.642e-11        1.658e-11      
+  1.018e-11         25.0000        2               
