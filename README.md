@@ -82,9 +82,10 @@ $$\tau = 3 \cdot 14.7 k\ohm \cdot 1.39fF = 60.88 ps$$
 
 ## Análisis
 ## Parte 1
+### Transitor NMOS
 Para determinar de forma empirica el valor de resistencia del transistor NMOS para el proceso XH018 se motaron las siguientes gráficas.
 
-![NMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/e9f933b0-f815-4d3c-b69d-b412f087960e)
+![NMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/79e5fc9f-8c60-49d7-87f3-55c9065d06c1)
 
 ![NMOS_Ids_Vgs](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/2201089d-fc23-433e-aa93-48ea43aab2c2)
 
@@ -102,11 +103,11 @@ $$R_{eff} =  \frac{1.8V}{199 \micro A  + 29.07 \micro A}  \approx 7.9 k\ohm $$
 Con los valores obtenido anteriormente se determinó la resistencia unitaria para un transistor NMOS, el cual se obtuvo el siguiente resultado. 
 $$R_{nueff} = \frac{7.9 k\ohm} {{0.36 \micro m}} \approx 22 k\ohm/\micro m$$
 
-
-
+### Transitor PMOS
 Una manera muy parecida se realizó para determinarlo los valores de resistencia de PMOS a continuación se presenta las gráficas y los cálculos afines a ellas. 
 
-![PMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/40eb13eb-c530-4af7-ba17-8d408a60f732)
+
+![PMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/1cccd635-e6b7-4593-b39b-c3e37863f585)
 
 
 ![PMOS_Ids_Vgs](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/81328b36-2d41-40da-9319-c40e7a9983ee)
@@ -119,6 +120,8 @@ Ahora con la ecuación (2) donde con ayuda de la gráfica se determinó que $I_H
 
 $$R_{eff} =  \frac{1.8V}{161.7 \micro A  + 20.83 \micro A}  \approx 9.9 k\ohm $$  
 
-
 Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
 $$R_{pueff} = \frac{9.9 k\ohm} {{0.36 \micro m}} \approx 27.5 k\ohm/\micro m$$
+
+Si se comparan los datos obtenidos con los teóricos se pueden apreciar diferencias de alrededor de 3 k\ohm máximo esto se debe a que el analísis teórico realizado se cálculo con valores de $W/L= (10/0.18) \micro m/\micro m$, esto influye mucho en los valores ya que no se considera el valor que se nesecita de W que es $0.36 \micro m$, por lo que al tenes ese parámetro mal se considera que los valores teóricos generados tiene una pequeña falla con respecto a los experimentales.  
+
