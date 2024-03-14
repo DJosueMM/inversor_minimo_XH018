@@ -15,17 +15,13 @@
 .lib '/mnt/vol_NFS_rh003/Est_VLSI_I_2024/Medina_Mayorga_I_2024_vlsi/VLSI/Tareas/Tarea1/Hspice/lp5mos/config.lib' default
 
 .global vdd! gnd!
-.subckt inv a y N=4 P=8
-xm0 y a gnd! gnd! ne w='N' l=2 
-+ as='N*5' ps='2*N+10' ad='N*5' pd='2*N+10'
-xm1 y a vdd! vdd! pe w='P' l=2
-+ as='P*5' ps='2*P+10' ad='P*5' pd='2*P+10'
-.ends
+.include 'min_inverter.sp'
+
 *----------------------------------------------------------------------
 * Simulation netlist
 *----------------------------------------------------------------------
 Vdd vdd! gnd! 'SUPPLY'
-Vin a gnd PULSE 0 'SUPPLY' 0ps 20ps 20ps 120ps 280ps
+Vin a gnd! PULSE 0 'SUPPLY' 0ps 50ps 50ps 450ps 1000ps
 X1 a b inv P='P1' * shape input waveform
 X2 b c inv P='P1' M=4 * reshape input waveform
 X3 c d inv P='P1' M=16 * device under test
@@ -40,7 +36,8 @@ X5 e f inv P='P1' M=256 * load on load
 *----------------------------------------------------------------------
 * Stimulus
 *----------------------------------------------------------------------
-.tran 0.1ps 280ps SWEEP OPTIMIZE=optrange RESULTS=diff MODEL=optmod
+.tran 1ps 1ns SWEEP OPTIMIZE=optrange RESULTS=diff MODEL=optmod
+
 .measure tpdr * rising propagation delay
 + TRIG v(c) VAL='SUPPLY/2' FALL=1 
 + TARG v(d) VAL='SUPPLY/2' RISE=1
@@ -48,6 +45,6 @@ X5 e f inv P='P1' M=256 * load on load
 + TRIG v(c) VAL='SUPPLY/2' RISE=1
 + TARG v(d) VAL='SUPPLY/2' FALL=1 
 .measure tpd param='(tpdr+tpdf)/2' goal=0 * average prop delay
-.measure diff param='tpdr-tpdf' goal = 0 * diff between delays
-
+.measure diff param='tpdr-tpdf' goal=0 * diff between delays
+.option measform=3
 .end

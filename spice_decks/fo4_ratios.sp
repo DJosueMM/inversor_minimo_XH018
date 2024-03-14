@@ -60,5 +60,5 @@ X5 e f inv N='N1'  P='N1*Ra'  M='H**4'
 
 .probe tran v(c) v(d)
 .measure pwr AVG 'P(Vdd)*-1' FROM=0ns TO=1ns
-
+.option measform=3
 .end
