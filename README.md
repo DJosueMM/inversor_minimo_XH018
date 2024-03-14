@@ -12,7 +12,7 @@ $$R_{eff} = \frac{V_{DD}}{I_{H}+I_{L}}  \quad(2)$$
 \
 \
 Los valores para los siguientes cáculos se tomaron de los parámetros para transistores 1.8V (ne,pe) de un proceso XH018 - 0.18 µm. Además para los cáculos realizados, se desprecia $I_{L}$, ya que su valor en comparación con otras corrientes en el circuitos es muy pequeña. También es importante destacar que para obtener los valores de las resistecias en términos de ohmios se multipicaron las ecuaciones (1) y (2) por el ancho de los transistores. 
-`spice.deck`
+
 ### Cáculos para transistor NMOS
 A continuación se presentan los cálculo con la ecuación (1).
 $$R_{eff} = \frac{3In(2)}{4} \frac{1.8V}{475 \times 10^{-6} A/{\micro m} \cdot 0.36{\micro m}} \approx 5.5 k\ohm $$  
@@ -24,7 +24,7 @@ Para determinar la resistencia unitaria de un transistor NMOS para el proceso XH
 $$R_{nueff} = \frac{1.8V} {(475 \times 10^{-6} A/{\micro m})} \approx 3.8 k\ohm/{\micro m}$$
 
 ### Análisis empírico
-Para determinar de forma empírica el valor de resistencia del transistor NMOS para el proceso XH018 se motaron las siguientes gráficas.
+Para determinar de forma empírica el valor de resistencia del transistor NMOS para el proceso XH018 se montó el siguiente deck https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/spice_decks/nmos_test.sp y luego se exportaron en un archivo .csv para gráficarlas en python y se obtuvieron las siguientes gráficas.
 
 ![NMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/79e5fc9f-8c60-49d7-87f3-55c9065d06c1)
 
@@ -51,10 +51,10 @@ Ahora con la ecuación (2).
 $$R_{eff} = \frac{1.8V} {(170 \times 10^{-6} A/{\micro m}) \cdot 0.72{\micro m}} \approx 14.7 k\ohm$$
 \
 Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
-$$R_{pueff} = \frac{1.8V} {(170 \times 10^{-6} A/{\micro m})} \approx 10.6 k\ohm$$
+$$R_{pueff} = \frac{1.8V} {(170 \times 10^{-6} A/{\micro m})} \approx 10.6 k\ohm/{\micro m}$$
 
 ### Análisis empírico
-Una manera muy parecida se realizó para determinarlo los valores de resistencia de PMOS a continuación se presenta las gráficas y los cálculos afines a ellas. 
+Una manera muy parecida se realizó para determinarlo los valores de resistencia de PMOS pero en este caso se uso el siguiente deck https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/spice_decks/pmos_test.sp, para posteriomente realizar el mismo procedimiento que el nmos, a continuación se presenta las gráficas y los cálculos realizados. 
 
 ![PMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/1cccd635-e6b7-4593-b39b-c3e37863f585)
 
