@@ -1,0 +1,5 @@
+$DATA1 SOURCE='PrimeSim HSPICE' VERSION='U-2023.03-SP2 linux6' PARAM_COUNT=2
+$OPTION MEASFORM=3
+.TITLE '*fo4_opt.sp'
+index,p1,bestratio,tpdr,tpdf,tpd,diff,temper,alter#
+2,  13.2009,   3.3002, 8.652e-11, 8.511e-11, 8.581e-11, 1.411e-12,  70.0000,1
