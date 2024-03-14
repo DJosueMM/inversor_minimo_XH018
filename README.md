@@ -81,4 +81,44 @@ $$\tau = 3 \cdot 14.7 k\ohm \cdot 1.39fF = 60.88 ps$$
 
 
 ## Análisis
-### Incluir figuras 
+## Parte 1
+Para determinar de forma empirica el valor de resistencia del transistor NMOS para el proceso XH018 se motaron las siguientes gráficas.
+
+![NMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/e9f933b0-f815-4d3c-b69d-b412f087960e)
+
+![NMOS_Ids_Vgs](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/2201089d-fc23-433e-aa93-48ea43aab2c2)
+
+
+
+Para determinar la resistencia mediante la ecuación (1) se utilizó la gráfica de la función de transferencia de NMOS, con esta se aproximo el valor de $I_{sat}$ y se realizó el cálculo que se presenta a continuación. 
+
+$$R_{eff} =\frac{3In(2)}{4} \frac{1.8V} {213.7 \micro A} \approx 4.4 k\ohm$$
+
+Con ayuda de la gráfica de la curva característica del transistor NMOS se extrajeron los datos de $I_H$ e $I_L$, estos dieron como resultado $199 \micro A$ y $29.07 \micro A$ respectivamente, una vez obtenidos los datos se procedió a resolver la ecuación (2), el resultado se presenta a continuación. 
+
+$$R_{eff} =  \frac{1.8V}{199 \micro A  + 29.07 \micro A}  \approx 7.9 k\ohm $$  
+
+
+Con los valores obtenido anteriormente se determinó la resistencia unitaria para un transistor NMOS, el cual se obtuvo el siguiente resultado. 
+$$R_{nueff} = \frac{7.9 k\ohm} {{0.36 \micro m}} \approx 22 k\ohm/\micro m$$
+
+
+
+Una manera muy parecida se realizó para determinarlo los valores de resistencia de PMOS a continuación se presenta las gráficas y los cálculos afines a ellas. 
+
+![PMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/40eb13eb-c530-4af7-ba17-8d408a60f732)
+
+
+![PMOS_Ids_Vgs](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/81328b36-2d41-40da-9319-c40e7a9983ee)
+
+
+Primero se presenta los cálculos con la ecuación (1).
+$$R_{eff} =\frac{3In(2)}{4} \frac{1.8V} {180.5 \micro A} \approx 5.2 k\ohm$$
+
+Ahora con la ecuación (2) donde con ayuda de la gráfica se determinó que $I_H=161.7\micro A$ e $I_L=20.83\micro A$.
+
+$$R_{eff} =  \frac{1.8V}{161.7 \micro A  + 20.83 \micro A}  \approx 9.9 k\ohm $$  
+
+
+Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
+$$R_{pueff} = \frac{9.9 k\ohm} {{0.36 \micro m}} \approx 27.5 k\ohm/\micro m$$
