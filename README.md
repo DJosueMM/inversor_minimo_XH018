@@ -23,6 +23,7 @@ $$R_{eff} = \frac{1.8V} {(475 \times 10^{-6} A/{\micro m}) \cdot 0.36{\micro m}}
 Para determinar la resistencia unitaria de un transistor NMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
 $$R_{nueff} = \frac{1.8V} {(475 \times 10^{-6} A/{\micro m})} \approx 3.8 k\ohm/{\micro m}$$
 
+Estos valores difieren ya que la ecuación que usa la corriente de saturación solo funcionaría para transistores digitalizados que operen siempre en saturación de velocidad.
 ### Análisis empírico
 Para determinar de forma empírica el valor de resistencia del transistor NMOS para el proceso XH018 se montó el siguiente deck https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/spice_decks/nmos_test.sp y luego se exportaron en un archivo .csv para gráficarlas en python y se obtuvieron las siguientes gráficas.
 
@@ -174,21 +175,33 @@ Analizando la potencia promedio, esta es directamente proporcional al ratio P/N.
 
 Se realizó una optimización automática en hspice con el deck `fo4_opt.sp`. Se obtuvieron los siguientes datos:
 
-| P/lamda | bestratio | tpdr     | tpdf     | tpd      | diff     | Temperatura|
+|  P/λ    | bestratio | tpdr     | tpdf     | tpd      | diff     | Temperatura|
 |---------|-----------|----------|----------|----------|----------|------------|
-| 13.2009 | 3.3002    | 86.52 ps | 85.11 ps | 85.81 ps | 14.11 ps | 70.00 C  |
+| 13.2009 | 3.3002    | 86.52 ps | 85.11 ps | 85.81 ps | 14.11 ps | 70.00 C    |
 
 El optimizador resultó en que el mejor ratio es de 3.3:1, con un ancho del PMOS de 13.20009 * 90nm, consiguiendo una diferencia entre tpdf y tpdr de 14.11 ps.
 
-Tanto el proceso de optimización manual como el generado por hspice convergen a resultados aproximados. El realizado manualmente llega a un punto de mayor simetría en tiempos de propagación pero el PMOS llega a ser más rápido que el NMOS, en constraste, la optimización automática encontró el mejor punto de simetría pero donde el NMOS seguía siendo más rápido que el PMOS. En términos de potencia ambas optimizaciones disipan más que un ratio 2:1 y la relación 2:1 es más rápida al tener un tpd menor que ambas optimizaciones. Por último, en términos de área se puede ver que se llegan a anchos de hasta 13.2 lamdas lo que implica un gran área para la implementación física.
+Tanto el proceso de optimización manual como el generado por hspice convergen a resultados aproximados. El realizado manualmente llega a un punto de mayor simetría en tiempos de propagación pero el PMOS llega a ser más rápido que el NMOS, en constraste, la optimización automática encontró el mejor punto de simetría pero donde el NMOS seguía siendo más rápido que el PMOS. En términos de potencia ambas optimizaciones disipan más que un ratio 2:1 y la relación 2:1 es más rápida al tener un tpd menor que ambas optimizaciones. Por último, en términos de área se puede ver que se llegan a anchos de hasta 13.2 veces λ lo que implica un gran área para la implementación física.
 
 Tomando todos estos parámetros en consideración, se puede concluir que valores cercanos a ratios de 2:1 y 3:1 pueden cumplir para distintos requisitos de diseño, ya sea en consumo de potencia, velocidad o simetría de las señales.
 
 ### Parte 2.c
 
+En base a la siguiente ecuación se realizarán los cálculos de resistencia efectiva:
+$tpdr = \frac{3}{2} * R_{p} * C$
 
+|  Transistor    | Parametro | Valor (kΩ)     | 
+|----------------|-----------|----------------|
+| NMOS           | Rn        | 14.92          | 
+|----------------|-----------|----------------|
+| PMOS           | Rp        | 27.82          | 
 
+Entonces el resultado obtenido por la simulación además de ser más fiel a los modelos de xfab funcionan para un tipo de análisis del peor caso, entonces a pertir de ahí todo es una mejora.
 
-
-
+# Bibliografía
+[1] N. Weste and D. Harris, CMOS VLSI Design: A Circuits and Systems Perspective, 4 edition.
+Boston: Addison-Wesley, 2010.
+[2] Process and Device Specification XH018 - 0.18 μm Modular Mixed Signal HV CMOS, PDS-018-
+13. Release 7.0.1. XFAB Semiconductor Foundries, Nov. 2017.
+[3] J. Rabaey, A. Chandrakasan y B. Nikolic. Digital Integrated Circuits: A Design Perspective.
 
