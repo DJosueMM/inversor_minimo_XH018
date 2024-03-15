@@ -25,7 +25,7 @@ $$R_{nueff} = \frac{1.8V} {(475 \times 10^{-6} A/{\micro m})} \approx 3.8 k\ohm 
 
 Estos valores difieren ya que la ecuación que usa la corriente de saturación solo funcionaría para transistores digitalizados que operen siempre en saturación de velocidad.
 ### Análisis empírico
-Para determinar de forma empírica el valor de resistencia del transistor NMOS para el proceso XH018 se montó el siguiente deck https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/spice_decks/nmos_test.sp y luego se exportaron en un archivo .csv para gráficarlas en python y se obtuvieron las siguientes gráficas.
+Para determinar de forma empírica el valor de resistencia del transistor NMOS para el proceso XH018 se montó el deck `nmos_test.sp` y luego se exportaron en un archivo .csv para gráficarlas en python y se obtuvieron las siguientes gráficas.
 
 ![NMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/79e5fc9f-8c60-49d7-87f3-55c9065d06c1)
 
@@ -55,7 +55,7 @@ Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH
 $$R_{pueff} = \frac{1.8V} {(170 \times 10^{-6} A/{\micro m})} \approx 10.6 k\ohm * {\micro m}$$
 
 ### Análisis empírico
-Una manera muy parecida se realizó para determinarlo los valores de resistencia de PMOS pero en este caso se uso el siguiente deck https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/spice_decks/pmos_test.sp, para posteriomente realizar el mismo procedimiento que el nmos, a continuación se presenta las gráficas y los cálculos realizados. 
+Una manera muy parecida se realizó para determinarlo los valores de resistencia de PMOS pero en este caso se uso el deck `pmos_test.sp`, para posteriomente realizar el mismo procedimiento que el nmos, a continuación se presenta las gráficas y los cálculos realizados. 
 
 ![PMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/1cccd635-e6b7-4593-b39b-c3e37863f585)
 
@@ -64,7 +64,7 @@ Una manera muy parecida se realizó para determinarlo los valores de resistencia
 Primero se presenta los cálculos con la ecuación (1).
 $$R_{eff} =\frac{3In(2)}{4} \frac{1.8V} {180.5 \micro A} \approx 5.2 k\ohm$$
 
-Ahora con la ecuación (2) donde con ayuda de la gráfica se determinó que $I_H=161.7\micro A$ e $I_L=20.83\micro A$.
+Ahora con la ecuación (2) donde con ayuda de la gráfica se determinó que $I_H=102\micro A$ e $I_L=13.01\micro A$.
 
 $$R_{eff} =  \frac{1.8V}{102 \micro A + 13.01 \micro A}  \approx 15.65 k\ohm $$  
 
