@@ -121,10 +121,11 @@ Para obtener un inversor sin sesgo con márgenes de ruido totalmente simétricos
 
 ![Función de transferencia del inversor](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/tf_inv_ra.png)
 
-De estos datos, se concluye que para una relación de aproximadamente 3.1 : 1 se logran márgenes de ruido simétricos. 
+De estos datos, se concluye que para una relación de aproximadamente 3.1 : 1 se logran márgenes de ruido simétricos. No se llega a la simetría total debido a que se muestrearon ratios discretos, sin embargo, estas aproximaciónes son suficientes para un análisis del peor caso.
+
 En cuanto a la corriente de cortocircuito, que ocurre cuando ambos transistores están encendidos en el punto donde Vout = VDD/2, se obtuvo la siguiente gráfica de corriente de cortocircuito en función de la relación P/N:
 
-![Corriente de cortocircuito](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/Isc_vs_ra.png)
+![Corriente de cortocircuito](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/FO4_opt_isc.png)
 
 Para una relación cercana a la que proporciona márgenes de ruido simétricos, se tiene aproximadamente una corriente instantánea de 0.90 A.
 
@@ -135,18 +136,45 @@ Los análisis anteriores se realizaron para una esquina de variabilidad del proc
 - WO: worst case one; NMOS rápido y PMOS lento
 - WZ: worst case zero; NMOS lento y PMOS rápido
 
-Se obtuvo la función de transferencia del proceso para cada esquina:
+Se simuló el inversor para cada esquina de variabilidad para obtener los tiempos de transición:
 
-[Insertar función de transferencia para cada esquina]
+![inv_corners](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/transient_inv_esquinas.png)
 
 De estos datos, se obtuvieron los respectivos tiempos de propagación de subida y de caída para cada esquina:
 
 ![Esquinas de variabilidad](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/corners_const.png)
 
 
-
-
 ### Parte 2.b
+
+#### FO4
+
+Se montó el FO4 que propone el libro [1], este se encuentra en `fo4_ratios.sp`. Con una ratio P/N de 2:1 se obtuvieron las señales en cada etapa del FO4:
+
+Se obtuvo un tpdr = 80.76 ps, un tpdf = 70.34 ps y un tpd = 75.55 ps.
+
+![fo4](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/FO4.png)
+
+#### Optimización manual
+Después se modificó el deck para probar distintos ratios P/N automáticamente, este se encuentra en `fo4_ratios.sp`. Se obtuvieron las siguietes gráficas:
+
+Para los tiempos de propagación para los distintos ratios P/N:
+
+![tpd_ratios](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/FO4_opt_t.png)
+
+Para la potencia promedio para los distintos ratios P/N:
+
+![pwr_ratios](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/FO4_opt_pwr.png)
+
+#### Optimización de hspice
+
+
+| p1      | bestratio | tpdr     | tpdf     | tpd      | diff     | Temperatura|
+|---------|-----------|----------|----------|----------|----------|------------|
+| 13.2009 | 3.3002    | 86.52 ps | 85.11 ps | 85.81 ps | 14.11 ps | 70.0000 C  |
+
+
+
 
 
 ### Parte 2.c
