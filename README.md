@@ -156,26 +156,33 @@ Se obtuvo un tpdr = 80.76 ps, un tpdf = 70.34 ps y un tpd = 75.55 ps.
 ![fo4](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/FO4.png)
 
 #### Optimización manual
-Después se modificó el deck para probar distintos ratios P/N automáticamente, este se encuentra en `fo4_ratios.sp`. Se obtuvieron las siguietes gráficas:
+Para lograr tener la mínima diferencia entre los tiempos de propagación de subida y de bajada se modificó el deck para probar distintos ratios P/N automáticamente, este se encuentra en `fo4_ratios.sp`. Se obtuvieron las siguietes gráficas:
 
 Para los tiempos de propagación para los distintos ratios P/N:
 
 ![tpd_ratios](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/FO4_opt_t.png)
 
+De este barrido de parámetros, se concluye que el ratio P/N óptimo es de 3.4 : 1, obteniendo una diferencia de 0.21 ps. En contraste, una relación 2:1 tiene una diferencia de 10.43 ps en los tiempos de propagación. A pesar de que la relación 2:1 no es simétrica, en promedio es más rápida que la relación en el punto optimizado. La relación 2:1 tiene un tiempo de propagación promedio de 75.55 ps mientras que la relación 3.4 : 1 tiene un tiempo de propagación promedio de 87.17 ps.
+
 Para la potencia promedio para los distintos ratios P/N:
 
 ![pwr_ratios](https://github.com/DJosueMM/inversor_minimo_XH018/blob/main/Imagenes/FO4_opt_pwr.png)
 
+Analizando la potencia promedio, esta es directamente proporcional al ratio P/N. Para una relación 2:1 se tiene una potencia promedio de 4.94 mW meintras que para la relación en el punto de optimización se tienen 6.99 mW.
+
 #### Optimización de hspice
 
+Se realizó una optimización automática en hspice con el deck `fo4_opt.sp`. Se obtuvieron los siguientes datos:
 
-| p1      | bestratio | tpdr     | tpdf     | tpd      | diff     | Temperatura|
+| P/lamda | bestratio | tpdr     | tpdf     | tpd      | diff     | Temperatura|
 |---------|-----------|----------|----------|----------|----------|------------|
-| 13.2009 | 3.3002    | 86.52 ps | 85.11 ps | 85.81 ps | 14.11 ps | 70.0000 C  |
+| 13.2009 | 3.3002    | 86.52 ps | 85.11 ps | 85.81 ps | 14.11 ps | 70.00 C  |
 
+El optimizador resultó en que el mejor ratio es de 3.3:1, con un ancho del PMOS de 13.20009 * 90nm, consiguiendo una diferencia entre tpdf y tpdr de 14.11 ps.
 
+Tanto el proceso de optimización manual como el generado por hspice convergen a resultados aproximados. El realizado manualmente llega a un punto de mayor simetría en tiempos de propagación pero el PMOS llega a ser más rápido que el NMOS, en constraste, la optimización automática encontró el mejor punto de simetría pero donde el NMOS seguía siendo más rápido que el PMOS. En términos de potencia ambas optimizaciones disipan más que un ratio 2:1 y la relación 2:1 es más rápida al tener un tpd menor que ambas optimizaciones. Por último, en términos de área se puede ver que se llegan a anchos de hasta 13.2 lamdas lo que implica un gran área para la implementación física.
 
-
+Tomando todos estos parámetros en consideración, se puede concluir que valores cercanos a ratios de 2:1 y 3:1 pueden cumplir para distintos requisitos de diseño, ya sea en consumo de potencia, velocidad o simetría de las señales.
 
 ### Parte 2.c
 
