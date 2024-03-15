@@ -66,13 +66,15 @@ $$R_{eff} =\frac{3In(2)}{4} \frac{1.8V} {180.5 \micro A} \approx 5.2 k\ohm$$
 
 Ahora con la ecuación (2) donde con ayuda de la gráfica se determinó que $I_H=161.7\micro A$ e $I_L=20.83\micro A$.
 
-$$R_{eff} =  \frac{1.8V}{161.7 \micro A  + 20.83 \micro A}  \approx 9.9 k\ohm $$  
+$$R_{eff} =  \frac{1.8V}{102 \micro A + 13.01 \micro A}  \approx 15.65 k\ohm $$  
 
 Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
-$$R_{pueff} = \frac{9.9 k\ohm} {{0.36 \micro m}} \approx 27.5 k\ohm/\micro m$$
+$$R_{pueff} = \frac{15.65 k\ohm} {{0.36 \micro m}} \approx 43.47 k\ohm/\micro m$$
 \
 \
 Al comparar los datos obtenidos con los valores teóricos, se aprecian diferencias de alrededor de $4 k\ohm$ máximo. Esto se debe a que el analísis teórico realizado se cálculo con valor de $W/L= (10/0.18) \micro m/\micro m$, ya que el parámetros porporcionados para la tecnología XH018 mostraban ese valor, lo cual implica un gran impacto en los valores debido a que no se considera el valor mínimo de ancho necesario para esta tecngología que es $0.36 \micro m$. Por lo que, al tenes este parámetro diferente al requerido, se puede considerar que los valores teóricos generados tiene una pequeña discrepancia con respecto a los datos experimentales.  
+
+Tambien se comprueba que la resistencia efectiva del PMOS es aproximadamente 2 veces la del NMOS.
 
 
 ### Parte1.b Determinación de las capacitancias equivalentes que tiene el transistor de tamaño mínimo y constante RC para el proceso
