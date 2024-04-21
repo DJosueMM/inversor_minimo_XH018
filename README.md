@@ -84,7 +84,9 @@ Los valores para los siguientes cáculos se tomaron de los parámetros para tran
 $$C_{gs} = W_{dib} L_{dib}C_{ox} +  W_{dib}  C_{ov}  \quad(3)$$
 
 #### Fórmula de la constante RC ($\tau$) 
-$$\tau = 3RC  \quad(4)$$
+$$\tau = 3R_{n}C  \quad(4)$$
+
+$$\tau = (3/2) R_{p}C  \quad(5)$$
 
 ### Transistor NMOS
 #### Cálculo de la capacitancia 
@@ -105,7 +107,7 @@ $$C_{gp} \approx 1.39 fF$$
 
 #### Cálculo de la constante RC ($\tau$)
 Para determinar la constante RC para el transistor PMOS se utlizó la ecuación (4), el desarollo de la misma se presenta a continuación.
-$$\tau = 3 \cdot 14.7 k\ohm \cdot 1.39fF = 60.88 ps$$
+$$\tau = 3/2 \cdot 14.7 k\ohm \cdot 1.39fF = 30.64 ps$$
 
 
 
