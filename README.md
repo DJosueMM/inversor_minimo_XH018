@@ -106,7 +106,7 @@ $$C_{gp} = 0.72\micro m \cdot 0.18\micro m \cdot 8.91 fF/\micro{m}^{2} +  0.72\m
 $$C_{gp} \approx 1.39 fF$$
 
 #### Cálculo de la constante RC ($\tau$)
-Para determinar la constante RC para el transistor PMOS se utlizó la ecuación (4), el desarollo de la misma se presenta a continuación.
+Para determinar la constante RC para el transistor PMOS se utlizó la ecuación (5), el desarollo de la misma se presenta a continuación.
 $$\tau = 3/2 \cdot 14.7 k\ohm \cdot 1.39fF = 30.64 ps$$
 
 
