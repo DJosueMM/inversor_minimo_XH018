@@ -1,9 +1,9 @@
-# inversor_minimo_XH018
+# inversor_minimo_XT018
 Tarea_1_Introducción al diseño de circuitos integrados
 
-## Parte 1. Estimación de salida base de las características RC del proceso XH018
+## Parte 1. Estimación de salida base de las características RC del proceso XT018
 
-### Parte1.a Determinación de las resistencias de canal de transistores mínimos NMOS y PMOS para el proceso XH018
+### Parte1.a Determinación de las resistencias de canal de transistores mínimos NMOS y PMOS para el proceso XT018
 #### Fórmula de la resistencia cuando el transistor esta saturado
 $$R_{eff} = \frac{3In(2)}{4} \frac{V_{DD}}{I_{sat}}  \quad(1)$$ 
 
@@ -11,7 +11,7 @@ $$R_{eff} = \frac{3In(2)}{4} \frac{V_{DD}}{I_{sat}}  \quad(1)$$
 $$R_{eff} = \frac{V_{DD}}{I_{H}+I_{L}}  \quad(2)$$
 \
 \
-Los valores para los siguientes cáculos se tomaron de los parámetros para transistores 1.8V (ne,pe) de un proceso XH018 - 0.18 µm. Además para los cáculos realizados, se desprecia $I_{L}$, ya que su valor en comparación con otras corrientes en el circuitos es muy pequeña. También es importante destacar que para obtener los valores de las resistecias en términos de ohmios se multipicaron las ecuaciones (1) y (2) por el ancho de los transistores. 
+Los valores para los siguientes cáculos se tomaron de los parámetros para transistores 1.8V (ne,pe) de un proceso XT018 - 0.18 µm. Además para los cáculos realizados, se desprecia $I_{L}$, ya que su valor en comparación con otras corrientes en el circuitos es muy pequeña. También es importante destacar que para obtener los valores de las resistecias en términos de ohmios se multipicaron las ecuaciones (1) y (2) por el ancho de los transistores. 
 
 ### Cáculos para transistor NMOS
 A continuación se presentan los cálculo con la ecuación (1).
@@ -20,12 +20,12 @@ $$R_{eff} = \frac{3In(2)}{4} \frac{1.8V}{475 \times 10^{-6} A/{\micro m} \cdot 0
 Ahora con la ecuación (2).
 $$R_{eff} = \frac{1.8V} {(475 \times 10^{-6} A/{\micro m}) \cdot 0.36{\micro m}} \approx 10.6 k\ohm$$
 \
-Para determinar la resistencia unitaria de un transistor NMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
+Para determinar la resistencia unitaria de un transistor NMOS para el proceso XT018 - 0.18 µm se realiza de la siguiente forma.
 $$R_{nueff} = \frac{1.8V} {(475 \times 10^{-6} A/{\micro m})} \approx 3.8 k\ohm * {\micro m}$$
 
 Estos valores difieren ya que la ecuación que usa la corriente de saturación solo funcionaría para transistores digitalizados que operen siempre en saturación de velocidad.
 ### Análisis empírico
-Para determinar de forma empírica el valor de resistencia del transistor NMOS para el proceso XH018 se montó el deck `nmos_test.sp` y luego se exportaron en un archivo .csv para gráficarlas en python y se obtuvieron las siguientes gráficas.
+Para determinar de forma empírica el valor de resistencia del transistor NMOS para el proceso XT018 se montó el deck `nmos_test.sp` y luego se exportaron en un archivo .csv para gráficarlas en python y se obtuvieron las siguientes gráficas.
 
 ![NMOS_Ids_Vds](https://github.com/DJosueMM/inversor_minimo_XH018/assets/125601912/79e5fc9f-8c60-49d7-87f3-55c9065d06c1)
 
@@ -51,7 +51,7 @@ $$R_{eff} = \frac{3In(2)}{4} \frac{1.8V}{170 \times 10^{-6} A/{\micro m} \cdot 0
 Ahora con la ecuación (2).
 $$R_{eff} = \frac{1.8V} {(170 \times 10^{-6} A/{\micro m}) \cdot 0.72{\micro m}} \approx 14.7 k\ohm$$
 \
-Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
+Para determinar la resistencia unitaria de un transistor PMOS para el proceso XT018 - 0.18 µm se realiza de la siguiente forma.
 $$R_{pueff} = \frac{1.8V} {(170 \times 10^{-6} A/{\micro m})} \approx 10.6 k\ohm * {\micro m}$$
 
 ### Análisis empírico
@@ -68,17 +68,17 @@ Ahora con la ecuación (2) donde con ayuda de la gráfica se determinó que $I_H
 
 $$R_{eff} =  \frac{1.8V}{102 \micro A + 13.01 \micro A}  \approx 15.65 k\ohm $$  
 
-Para determinar la resistencia unitaria de un transistor PMOS para el proceso XH018 - 0.18 µm se realiza de la siguiente forma.
+Para determinar la resistencia unitaria de un transistor PMOS para el proceso XT018 - 0.18 µm se realiza de la siguiente forma.
 $$R_{pueff} = \frac{15.65 k\ohm} {{0.36 \micro m}} \approx 43.47 k\ohm/\micro m$$
 \
 \
-Al comparar los datos obtenidos con los valores teóricos, se aprecian diferencias de alrededor de $4 k\ohm$ máximo. Esto se debe a que el analísis teórico realizado se cálculo con valor de $W/L= (10/0.18) \micro m/\micro m$, ya que el parámetros porporcionados para la tecnología XH018 mostraban ese valor, lo cual implica un gran impacto en los valores debido a que no se considera el valor mínimo de ancho necesario para esta tecngología que es $0.36 \micro m$. Por lo que, al tenes este parámetro diferente al requerido, se puede considerar que los valores teóricos generados tiene una pequeña discrepancia con respecto a los datos experimentales.  
+Al comparar los datos obtenidos con los valores teóricos, se aprecian diferencias de alrededor de $4 k\ohm$ máximo. Esto se debe a que el analísis teórico realizado se cálculo con valor de $W/L= (10/0.18) \micro m/\micro m$, ya que el parámetros porporcionados para la tecnología XT018 mostraban ese valor, lo cual implica un gran impacto en los valores debido a que no se considera el valor mínimo de ancho necesario para esta tecngología que es $0.36 \micro m$. Por lo que, al tenes este parámetro diferente al requerido, se puede considerar que los valores teóricos generados tiene una pequeña discrepancia con respecto a los datos experimentales.  
 
 Tambien se comprueba que la resistencia efectiva del PMOS es aproximadamente 2 veces la del NMOS.
 
 
 ### Parte1.b Determinación de las capacitancias equivalentes que tiene el transistor de tamaño mínimo y constante RC para el proceso
-Los valores para los siguientes cáculos se tomaron de los parámetros para transistores 1.8V (ne,pe) de un proceso XH018 - 0.18 µm.
+Los valores para los siguientes cáculos se tomaron de los parámetros para transistores 1.8V (ne,pe) de un proceso XT018 - 0.18 µm.
 
 #### Fórmula de la capacitancia parásita si se considera pesimista 
 $$C_{gs} = W_{dib} L_{dib}C_{ox} +  W_{dib}  C_{ov}  \quad(3)$$
@@ -197,7 +197,6 @@ $tpdr = \frac{3}{2} * R_{p} * C$
 |  Transistor    | Parametro | Valor (kΩ)     | 
 |----------------|-----------|----------------|
 | NMOS           | Rn        | 14.92          | 
-|----------------|-----------|----------------|
 | PMOS           | Rp        | 27.82          | 
 
 Entonces el resultado obtenido por la simulación además de ser más fiel a los modelos de xfab funcionan para un tipo de análisis del peor caso, entonces a pertir de ahí todo es una mejora.
